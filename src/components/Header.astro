@@ -13,35 +13,56 @@ import Button from "@components/Button.astro";
       <a href="/team"> Team</a>
       <a href="/about">About</a>
     </nav>
-    <Button Type="yellow">Login</Button>
+    <button type="button" onclick="window.showPopup()">Login</button>
   </div>
 </header>
 
 <style>
-  header {
-    background-color: var(--primary03Opacity);
-    padding: 40px 0;
-    grid-column: edge;
-    display: grid;
-    grid-template-columns: subgrid;
-    height: fit-content;
-  }
-
-  .inner {
-    grid-column: main;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    h1 {
-      color: #fff;
-      margin: 0;
-      font-size: 30px;
+  @layer components {
+    header {
+      background-color: var(--primary03Opacity);
+      padding: 40px 0;
+      grid-column: edge;
+      display: grid;
+      grid-template-columns: subgrid;
+      height: fit-content;
     }
-  }
-  a {
-    color: var(--secondary02);
-    text-decoration: none;
-    margin: 0px 10px;
+
+    .inner {
+      grid-column: main;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      h1 {
+        color: #fff;
+        margin: 0;
+        font-size: 30px;
+      }
+    }
+    a {
+      color: var(--secondary02);
+      text-decoration: none;
+      margin: 0px 10px;
+    }
+    button {
+      display: flex;
+      padding: 0.9375rem 1.875rem;
+      align-items: flex-start;
+      gap: 0.625rem;
+      border-radius: 2.625rem;
+      text-align: center;
+      font-family: Lato;
+
+      text-decoration: none;
+      width: fit-content;
+      height: fit-content;
+      background: var(--primary01);
+      color: var(--primary03);
+    }
+
+    button:hover {
+      background: #ffe5a2;
+    }
   }
 </style>

@@ -5,6 +5,7 @@ import Footer from "@components/Footer.astro";
 import Newsletter from "@components/Newsletter.astro";
 import SectionWrapper from "@components/containers/SectionWrapper.astro";
 const Title = Astro.props.Title;
+import PopUp from "@components/PopUp.astro";
 ---
 
 <html lang="en">
@@ -29,6 +30,7 @@ const Title = Astro.props.Title;
     </style>
   </head>
   <body>
+    <PopUp />
     <Header />
     <main>
       <slot />
