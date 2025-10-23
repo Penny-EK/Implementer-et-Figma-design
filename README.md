@@ -1,82 +1,73 @@
-# Opgaveskabelon til Frontend Design tema på Frontend-valgfaget
+# REFLEKSION
 
-Se opgavebeskrivelsen på Fronter.
+Jeg synes opgave har været den perfekte kodemulighed: både på den sjove, frustrerende og udfordrende. Det har været en spændende opgave at arbejde med da der har været så mange forskellige elementer, men dette har også været grunden til at jeg blev nødt til at skære noget af projektet fra.
 
-## Medfølgende Data
+## Opbygning
 
-Der medfølger indholdsdata i form af lokale JSON-filer, som du kan bruge til din opgave. Det er ikke et krav til opgaven, men det kan gøre det nemmere og hurtigere at få tekst og billeder ind i dit projekt.
+Jeg har min _SectionWrapper.astro_ component som er den grundlæggende component da den gør det muligt at følge det definerede layout. Så næsten alt indhold på main bliver opdelt i sektioner ud fra SectionWrapper.
 
-Bemærk, at CaseStudy-siden allerede inkluderer data fra en lokal JSON-fil.
-
-Dokumentationen til anvendelsen af dataene finder du på: [https://frontend-design-theme.netlify.app/](https://frontend-design-theme.netlify.app/).
-
-Her er et eksempel på, hvordan du kan bruge dataene i dine Astro-komponenter:
+_dette er et kodesnippet fra SectionWrapper.astro_
 
 ```astro
-import employees from "@data/employees.json";
-
-console.log(employees);
-```
-
-## Brug af hjælpekomponenter
-
-### DynamicImage.astro
-
-Brug denne komponent til at vise billeder dynamisk fra lokale datafiler. Du skal blot sende stien fra datasættet direkte til komponenten.
-
-Eksempel med data:
-
-```astro
-{employees.map((employee) => (
-  <DynamicImage
-    imagePath={employee.img}
-    altText={employee.name}
-    width={200}
-    height={200}
-  />
-))}
-```
-
-### DynamicIcon.astro
-
-`DynamicIcon` bruges til at vise SVG-ikoner dynamisk baseret på et navn fra dine data.
-
-Eksempel med data:
-
-```astro
-{employee.social_links.map((link) => (
-  <DynamicIcon name={link.icon} />
-))}
-```
-
-Her vises et ikon for hvert socialt medie, hvor `icon`-feltet matcher filnavnet på SVG-ikonet i `src/icons/`.
-
-### HeroBgWrapper.astro
-
-HeroBgWrapper bruges til Hero-sektioner på diverse undersider. Brug `imagePath` til at angive baggrundsbilledet. Du skal selv hente billederne fra Figma og lægge dem i mappen `src/assets/images`. Henvis derefter kun til filnavnet (f.eks. 'case.webp').
-
-Alt markup du placerer mellem <HeroBgWrapper> og </HeroBgWrapper> bliver vist ovenpå baggrunden.
-
-Eksempel:
-
-```astro
-<HeroBgWrapper imagePath="case.webp" class="hero-bg">
-  <h1>Din overskrift</h1>
-</HeroBgWrapper>
-```
-
-Du kan tilføje ekstra styling via `class` eller `style`-props, og alt indhold mellem tags bliver vist ovenpå baggrunden.
-
+---
+const { Background, Type, Padding } = Astro.props;
 ---
 
-## Import af SVG-ikoner direkte
-
-Du kan også importere SVG-ikoner direkte i dine komponenter, hvis du ønsker mere kontrol eller styling:
-
-```astro
-import Checkmark from "@icons/checkmark.svg";
-
-<Checkmark width={32} height={32} class="my-icon" />
+<section class={Background} style={`padding: ${Padding};`}>
+  <div class="inner" class={Type}>
+    <slot />
+  </div>
+</section>
 ```
 
-Se evt. `src/pages/svgs.astro` for flere eksempler på direkte import og brug af SVG-ikoner.
+_her kan man se hvordan konstanten ”Padding” bliver brugt til at definere hvor meget padding der skal være på den inviduelle sektion, da det netop variere igennem designet._
+
+Og når den bliver kaldt, bliver den padding som bliver angivet sendt med
+
+```
+<SectionWrapper Padding="100px 0">
+```
+
+## CSS:
+
+### Global.css
+
+Min global.css indeholder ting som:
+
+- Css variabler
+- headers
+- Layout grid
+
+### Page
+
+Alle pages har css som kun gælder for den inviduelle side.
+f.eks. hvis der er specielle vilkår som kun gælder for en sektion på index
+
+### Components
+
+En største del af css ligger i de forskellige komponenter.
+Derudover bruger jeg særligt astro props til at kunne redigere på komponenten ud fra specifikke behov, nogen af de props som særligt har gået igen har værer ting som: padding, baggrundsfarve, klasser og type
+
+## Udfordringer:
+
+Ved opstart af projektet var det meget uoverskueligt hvor man skulle starte og etc.. dette gjorde at jeg fik spildt unødvendigt tid på være tabt i opgaven. Dette endte ud i sidste ende med at jeg blev nødt til at i store træk undlade responsiviteten på sitet. Det jeg har skåret fra, har gjort at jeg kunne gå mere i dybden med min kode og forstå flowet af den mere glidende.
+
+### Nemme løsninger
+
+Igennem projektet er der flere ”nemme løsninger” som gør at sitet måske ligner det rigtige, men i længden ikke er holdbart. Disse løsninger har været med til at nedsætte hvor responsivt sitet er.
+
+_Det er bl.a. løsninger som dette i headeren_
+
+```
+.hero-content {
+      margin-left: 10vw;
+    }
+```
+
+koden her giver illustrationen at teksten i hero på index følger [main] kolonnen i mit layout grid. Dog hvis der sker en ændring på [main] vil illustrationen fejle.
+
+## Afrunding
+
+Jeg er delvis tilfreds med hvordan projektet har endt ud. der er selvfølgelig flere ting som jeg har været nød til at ignorere, MEN jeg er tilfreds med min arbejdsindsats ud fra de vilkår der har været.
+
+Fremadrettet skal jeg være mere fokuseret på mine evner og min egen arbejdshastighed. Derudover skal jeg nok også være hurtigere til at registrere hvad der er inde for mine evner
