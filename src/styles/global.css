@@ -30,6 +30,7 @@ body {
     var(--highlight) [breakout-end]
     var(--wide) [edge-end];
   gap: 0 1.5rem;
+  /* width: 100%; */
 }
 
 h1,
@@ -129,5 +130,15 @@ main {
   background-color: var(--primary03);
   * {
     color: var(--secondary02);
+  }
+}
+/* Mobile styles */
+@media (max-width: 768px) {
+  /* body {
+    --highlight: minmax(0, 0px);
+    gap: 0;
+  } */
+  .grid1-1 {
+    grid-template-columns: 1fr;
   }
 }
