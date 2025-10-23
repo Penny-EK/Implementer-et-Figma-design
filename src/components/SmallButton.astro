@@ -2,25 +2,27 @@
 
 ---
 
-<button class="${className}">
+<button>
   <slot />
 </button>
 
 <style>
   button {
-    width: 70px;
-    height: 70px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    background-color: #1a1a1a;
+    background-color: var(--primary03);
+    color: white;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   button:hover {
     background-color: var(--primary01);
+    color: var(--primary03);
   }
 </style>
