@@ -50,7 +50,7 @@ Derudover bruger jeg særligt astro props til at kunne redigere på komponenten 
 
 ## Udfordringer:
 
-Ved opstart af projektet var det meget uoverskueligt hvor man skulle starte og etc.. dette gjorde at jeg fik spildt unødvendigt tid på være tabt i opgaven. Dette endte ud i sidste ende med at jeg blev nødt til at i store træk undlade responsiviteten på sitet. Det jeg har skåret fra, har gjort at jeg kunne gå mere i dybden med min kode og forstå flowet af den mere glidende.
+Ved opstart af projektet var det meget uoverskueligt hvor man skulle starte og etc.. dette gjorde at jeg fik spildt unødvendigt tid på være tabt i opgaven. Dette endte ud i sidste ende med at jeg blev nødt til at i store træk undlade responsiviteten (mobileview) på sitet. Det jeg har skåret fra, har gjort at jeg kunne gå mere i dybden med min kode og forstå flowet af den mere glidende.
 
 ### Nemme løsninger
 
