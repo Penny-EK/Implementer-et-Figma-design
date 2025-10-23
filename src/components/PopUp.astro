@@ -2,8 +2,8 @@
 import Button from "./Button.astro";
 ---
 
-<div class="overlay">
-  <div class="popUp">
+<div id="popup-overlay" class="overlay hidden" role="dialog" aria-modal="true">
+  <div class="popUp" role="document">
     <h2>Dashboard login</h2>
     <form action="">
       <div>
@@ -18,8 +18,12 @@ import Button from "./Button.astro";
     <Button Type="yellow">Go to Dashboard</Button>
   </div>
 </div>
+
 <style>
   @layer components {
+    .overlay.hidden {
+      display: none;
+    }
     .overlay {
       display: flex;
       position: fixed;
@@ -72,3 +76,20 @@ import Button from "./Button.astro";
     }
   }
 </style>
+
+<script type="module">
+  const overlay = document.getElementById("popup-overlay");
+
+  const show = () => overlay?.classList.remove("hidden");
+  const hide = () => overlay?.classList.add("hidden");
+
+  document.addEventListener("show-popup", show);
+  document.addEventListener("hide-popup", hide);
+
+  // Close when clicking outside the popUp box
+  overlay?.addEventListener("click", (e) => {
+    if (e.target === overlay) hide();
+  });
+  window.showPopup = show;
+  window.hidePopup = hide;
+</script>
