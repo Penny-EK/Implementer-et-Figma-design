@@ -66,6 +66,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
     display: flex;
     width: 100%;
     justify-content: space-between;
+    margin: -50px 0 0 0;
     dl {
       display: flex;
       flex-direction: row;
@@ -92,7 +93,9 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
   /* "easy" solution - not optimal */
   .case-details {
     max-width: 1028px;
-    margin: 0 auto;
+    margin: -50px auto 0 auto;
+    z-index: 3;
+    position: relative;
   }
   .inner {
     max-width: 750px;
