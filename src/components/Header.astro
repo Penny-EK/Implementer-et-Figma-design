@@ -2,7 +2,7 @@
 
 ---
 
-<header>
+<!-- <header>
   <div class="inner">
     <a href="/index.html">
       <h1>AskExperts</h1>
@@ -13,6 +13,7 @@
       <a href="/team"> Team</a>
       <a href="/about">About</a>
     </nav>
+
     <button type="button" onclick="window.showPopup()">Login</button>
   </div>
 </header>
@@ -66,3 +67,223 @@
     }
   }
 </style>
+ -->
+<header>
+  <div class="inner">
+    <div class="logo">
+      <a href="/index.html">
+        <h1>AskExperts</h1>
+      </a>
+    </div>
+    <nav>
+      <ul class="menu">
+        <li>
+          <a href="/index.html">Home</a>
+        </li>
+        <li>
+          <a href="/case">Case Study</a>
+        </li>
+        <li>
+          <a href="/team"> Team</a>
+        </li>
+        <li>
+          <a href="/about">About</a>
+        </li>
+        <li><button type="button" onclick="window.showPopup()">Login</button></li>
+      </ul>
+      <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </nav>
+  </div>
+</header>
+<style>
+  header {
+    background-color: var(--primary03Opacity);
+    padding: 40px 0;
+    grid-column: edge;
+    display: grid;
+    grid-template-columns: subgrid;
+    height: fit-content;
+  }
+  .inner {
+    grid-column: main;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    h1 {
+      color: #fff;
+      margin: 0;
+      font-size: 30px;
+    }
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .logo img {
+    height: 20px;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu li {
+    margin-right: 20px;
+  }
+
+  .menu li:last-child {
+    margin-right: 0;
+  }
+
+  a {
+    color: var(--secondary02);
+    text-decoration: none;
+    margin: 0px 10px;
+  }
+
+  .burger {
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .burger .line {
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    transition: 0.2s linear;
+  }
+  .burger {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+  }
+  button {
+    display: flex;
+    padding: 0.9375rem 1.875rem;
+    align-items: flex-start;
+    gap: 0.625rem;
+    border-radius: 2.625rem;
+    text-align: center;
+    font-family: Lato;
+
+    text-decoration: none;
+    width: fit-content;
+    height: fit-content;
+    background: var(--primary01);
+    color: var(--primary03);
+  }
+
+  button:hover {
+    background: #ffe5a2;
+  }
+  /* mobile view */
+  @media screen and (max-width: 800px) {
+    .menu {
+      display: none;
+    }
+    .burger {
+      display: block;
+      z-index: 12;
+      position: relative;
+    }
+    .burger.active .line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+      transition: 0.2s linear;
+    }
+
+    .burger.active .line:nth-child(2) {
+      opacity: 0;
+      transition: 0.15s linear;
+    }
+
+    .burger.active .line:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+      transition: 0.2s linear;
+    }
+
+    nav.active::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(16px);
+      z-index: 10;
+    }
+
+    nav.active .menu {
+      display: flex;
+      flex-direction: column;
+      background: var(--primary03);
+      border-radius: 30px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 400px;
+      padding: 40px 30px;
+      gap: 20px;
+      z-index: 11;
+    }
+
+    nav.active .menu li {
+      margin: 0;
+      text-align: center;
+    }
+
+    nav.active .menu a {
+      font-size: 20px;
+      color: var(--secondary02);
+      display: block;
+      padding: 10px;
+    }
+
+    nav.active .menu li:last-child {
+      margin-top: 10px;
+    }
+
+    nav.active .menu button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+<script>
+  const burger = document.querySelector(".burger");
+  const nav = document.querySelector("nav");
+  const menu = document.querySelector(".menu");
+
+  if (burger && nav && menu) {
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("active");
+      nav.classList.toggle("active");
+    });
+
+    menu.addEventListener("click", () => {
+      burger.classList.remove("active");
+      nav.classList.remove("active");
+    });
+  }
+</script>
