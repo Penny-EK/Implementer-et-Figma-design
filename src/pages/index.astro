@@ -1,8 +1,199 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/Hero.astro";
+import ScrollContainer from "@components/containers/ScrollContainer.astro";
+import ScrollCard from "@components/ScrollCard.astro";
+// import FlexCard from "@components/FlexCard.astro";
+import CircleStarts from "@components/CircleStarts.astro";
+import SectionWrapper from "@components/containers/SectionWrapper.astro";
+// import DynamicImage from "@components/helpers/DynamicImage.astro";
+import CoreValues from "@components/CoreValues.astro";
+
+// svgs
+import Cal from "@icons/cal.svg";
+import Money from "@icons/money.svg";
+import Law from "@icons/law.svg";
+import Card from "@icons/card.svg";
+import Pin from "@icons/pin.svg";
+import Phone from "@icons/phone.svg";
+import Clock from "@icons/clock.svg";
+
+// images
+import expect from "@assets/images/expect.jpg";
+import contact1 from "@assets/images/contact1.png";
+import contact2 from "@assets/images/contact2.png";
+import contact3 from "@assets/images/contact3.png";
+import { Image } from "astro:assets";
 ---
 
-<Layout>
+<Layout Title="Frontpage">
   <Hero />
+  <SectionWrapper Padding="100px 0">
+    <div class="grid1-1">
+      <Image class="img" src={expect} alt="What to expect illustration" width={634.18} height={395.97} />
+
+      <div>
+        <p class="tagline">we'll work with you</p>
+        <h2>what to expect</h2>
+        <p>Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals.</p>
+        <ul class="checkmarks">
+          <li>Collaborate to build actionable strategies that drive sustainable growth and deliver tangible outcomes.</li>
+          <li>Identify opportunities to optimize processes and implement impactful solutions with measurable results.</li>
+        </ul>
+      </div>
+    </div>
+  </SectionWrapper>
+
+  <SectionWrapper Background="lightgray" Padding="93px 0">
+    <h2>Financial Projections</h2>
+    <p>Financial projections are essential for planning and monitoring a company’s performance. They provide insights into potential revenue, expenses, and profitability over specific periods.</p>
+
+    <ScrollContainer>
+      <ScrollCard>
+        <Cal />
+        <h3>The Balance Sheet</h3>
+        <p>The Balance Sheet is a summary of the assets and liabilities and equity of a business at a specific point of time.</p>
+      </ScrollCard>
+      <ScrollCard>
+        <Card />
+        <h3>Income Statement</h3>
+        <p>The Income (Profit and Loss) Statement, commonly referred to as the P&L statement, summarizes the revenue and expenses for a specific time period (one month, one quarter, one year, etc.)</p>
+      </ScrollCard>
+      <ScrollCard>
+        <Law />
+        <h3>Financial Plan</h3>
+        <p>Keep your information current and review the documents on a regular basis (monthly or more often if needed). Review them with key individuals within your company.</p>
+      </ScrollCard>
+
+      <ScrollCard>
+        <Money />
+        <h3>Financial Ratios</h3>
+        <p>Ratios are useful when comparing your company with the competition on financial performance and also when benchmarking the performance of your company.</p>
+      </ScrollCard>
+    </ScrollContainer>
+  </SectionWrapper>
+
+  <SectionWrapper Background="yellow" Padding="132px 0">
+    <div class="grid1-1">
+      <div>
+        <p class="tagline">Experience</p>
+        <h2>More than 25 years of experience</h2>
+        <p>3000+ our clients are insured around the World</p>
+      </div>
+      <div class="statsContainer">
+        <CircleStarts Text="Consistency" Procent={85} />
+        <CircleStarts Text="Improvement" Procent={95} />
+        <CircleStarts Text="Branching" Procent={90} />
+      </div>
+    </div>
+  </SectionWrapper>
+
+  <SectionWrapper Background="darkgray" Padding="100px 0">
+    <CoreValues Type="white" />
+  </SectionWrapper>
+  <SectionWrapper Padding="70px 0">
+    <div class="grid1-1">
+      <div class="col">
+        <p class="tagline">Process</p>
+        <h2>Contact Us. It’s Easy.</h2>
+        <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative.</p>
+        <dl>
+          <div>
+            <div class="iconBg">
+              <Phone />
+            </div>
+            <div>
+              <dt>Call Today</dt>
+              <dd>+1 800 100 900</dd>
+            </div>
+          </div>
+          <div>
+            <div class="iconBg">
+              <Clock />
+            </div>
+            <div>
+              <dt>Monday to Friday</dt>
+              <dd>9AM - 5PM</dd>
+            </div>
+          </div>
+          <div>
+            <div class="iconBg">
+              <Pin />
+            </div>
+            <div>
+              <dt>USA Office</dt>
+              <dd>195 Devonshire St Boston, MA 02110</dd>
+            </div>
+          </div>
+        </dl>
+      </div>
+      <div class="bentoGrid">
+        <Image class="img" src={contact1} alt="What to expect illustration" />
+        <Image class="img" src={contact2} alt="What to expect illustration" />
+        <Image class="img" src={contact3} alt="What to expect illustration" />
+      </div>
+    </div>
+  </SectionWrapper>
 </Layout>
+<style>
+  .statsContainer {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+  }
+
+  .img {
+    border-radius: var(--border-radius);
+  }
+  .grid1-1 {
+    gap: 80px;
+  }
+
+  .bentoGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    :first-child {
+      grid-column: 1/2;
+      grid-row: 1/3;
+    }
+  }
+  dl {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    > div {
+      gap: 20px;
+      align-items: center;
+      display: flex;
+    }
+  }
+  .iconBg {
+    background-color: var(--primary01);
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+  }
+
+  dt {
+    color: var(--primary-font-color);
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+  }
+  dd {
+    color: var(--primary03);
+    font-family: Cabin;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+  }
+</style>

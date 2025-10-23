@@ -1,0 +1,113 @@
+---
+import DynamicImage from "./helpers/DynamicImage.astro";
+import DynamicIcon from "./helpers/DynamicIcon.astro";
+
+interface SocialLink {
+  platform: string;
+  url: string;
+  icon: string;
+}
+
+interface Employee {
+  id: number;
+  name: string;
+  title: string;
+  description: string;
+  description_long?: string;
+  past_experience?: string;
+  social_links?: SocialLink[];
+  slug?: string;
+  img?: string;
+}
+
+const { employee } = Astro.props as { employee: Employee };
+if (!employee) {
+  throw new Error("Team-card requires an `employee` prop");
+}
+---
+
+<article>
+  <a href={`/team/${employee.slug}`}>
+    <div class="grid">
+      <div class="img">
+        {employee.img ? <DynamicImage imagePath={employee.img} altText={employee.name} /> : null}
+      </div>
+      <p>{employee.title}</p>
+    </div>
+
+    <h3>{employee.name}</h3>
+  </a>
+
+  <p>{employee.description}</p>
+
+  {
+    employee.social_links && (
+      <div class="socials">
+        <a href="">
+          <DynamicIcon name="facebook" />
+        </a>
+        <a href="">
+          <DynamicIcon name="instagram" />
+        </a>
+        <a href="">
+          <DynamicIcon name="twitter" />
+        </a>
+      </div>
+    )
+  }
+</article>
+
+<style>
+  h3 {
+    color: var(--primary03);
+    text-align: center;
+    font-family: Cabin;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 116%;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  p {
+    color: var(--primary-font-color);
+    text-align: center;
+  }
+  .img {
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  .socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    .img {
+      grid-column: 1 / 1;
+      grid-row: 1 / 1;
+    }
+    p {
+      grid-column: 1 / 1;
+      grid-row: 1 / 1;
+      place-self: end end;
+      margin: 25px;
+      background-color: var(--primary03);
+      color: var(--secondary02);
+      border-radius: 29px;
+      padding: 0.25rem 1.31rem;
+    }
+  }
+  article:hover {
+    .grid p {
+      background-color: var(--primary01);
+      color: var(--primary03);
+    }
+  }
+</style>

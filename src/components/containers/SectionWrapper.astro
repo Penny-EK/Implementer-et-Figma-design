@@ -1,0 +1,25 @@
+---
+const { Background, Type, Padding } = Astro.props;
+---
+
+<section class={Background} style={`padding: ${Padding};`}>
+  <div class="inner" class={Type}>
+    <slot />
+  </div>
+</section>
+<style>
+  section {
+    display: grid;
+    grid-column: edge;
+    grid-template-columns: subgrid;
+  }
+  .inner {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: main;
+    width: 100%;
+  }
+  .breakOut {
+    grid-column: edge;
+  }
+</style>

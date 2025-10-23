@@ -1,0 +1,73 @@
+---
+const Color = Astro.props.Color;
+import ArrowRight from "@icons/arrow--right.svg";
+---
+
+<article class={Color}>
+  <slot />
+  <button>Read More <ArrowRight width={13} height={10} /></button>
+</article>
+
+<style>
+  article {
+    display: grid;
+    padding: 2.25rem;
+    width: 100%;
+    border-radius: var(--border-radius);
+    height: fit-content;
+  }
+  button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Lato;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1.5rem;
+  }
+
+  h4 {
+    font-family: Cabin;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 116%;
+  }
+  p {
+    font-family: Lato;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 147.5%;
+  }
+  .white {
+    background-color: #f5f5f5;
+
+    * {
+      color: #181818;
+    }
+    h4 {
+      color: #181818;
+      font-size: 20px;
+    }
+    p {
+      color: #595566;
+    }
+  }
+  .purewhite {
+    background-color: var(--secondary02);
+
+    * {
+      color: #181818;
+    }
+    h4 {
+      color: #181818;
+      font-size: 20px;
+    }
+    p {
+      color: #595566;
+    }
+  }
+</style>

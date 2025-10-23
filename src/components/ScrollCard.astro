@@ -1,0 +1,52 @@
+---
+const Img = Astro.props.Img;
+---
+
+<article>
+  <li>
+    <slot />
+  </li>
+</article>
+
+<style>
+  article {
+    display: flex;
+    max-width: 345px;
+    padding: 2.75rem 2.1875rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.625rem;
+    border-radius: var(--border-radius);
+    transition: 0.3s;
+    background-color: #ebebeb;
+    h3 {
+      color: #181818;
+      font-family: Cabin;
+      font-size: 1.5625rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 116%;
+    }
+    p {
+      color: #595566;
+      font-family: Lato;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 147.5%;
+    }
+  }
+
+  article:hover {
+    background-color: var(--primary03);
+    color: var(--primary01);
+    p,
+    h3 {
+      color: var(--secondary02);
+      width: 100%;
+    }
+  }
+  li {
+    list-style: none;
+  }
+</style>

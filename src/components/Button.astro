@@ -1,0 +1,49 @@
+---
+const Type = Astro.props.Type;
+---
+
+<a href="" class={Type}>
+  <slot />
+</a>
+
+<style>
+  a {
+    display: flex;
+    padding: 0.9375rem 1.875rem;
+    align-items: flex-start;
+    gap: 0.625rem;
+    border-radius: 2.625rem;
+    text-align: center;
+    font-family: Lato;
+
+    text-decoration: none;
+    width: fit-content;
+    height: fit-content;
+  }
+  .yellow {
+    background: var(--primary01);
+    color: var(--primary03);
+  }
+
+  .yellow:hover {
+    background: #ffe5a2;
+  }
+  .purewhite,
+  .black {
+    background: var(--primary03);
+    color: var(--secondary01);
+  }
+  .purewhite:hover,
+  .black:hover {
+    border: 2px solid #181818;
+    background: #fff;
+    color: #181818;
+  }
+
+  .white {
+    background: var(--secondary02);
+    * {
+      color: var(--primary03);
+    }
+  }
+</style>
