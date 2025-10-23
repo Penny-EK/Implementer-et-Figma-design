@@ -39,7 +39,7 @@ h4,
 h5,
 h6 {
   color: var(--primary-heading-color);
-  font-family: Cabin;
+  font-family: "Cabin", sans-serif;
   font-style: normal;
   font-weight: 600;
   line-height: 130%;
