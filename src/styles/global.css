@@ -77,7 +77,7 @@ h6 {
     grid-template-columns: auto 1fr;
     gap: 1rem;
     font-size: 1rem;
-    color: #595566;
+    color: var(--primary-font-color);
   }
   li::before {
     content: "";
